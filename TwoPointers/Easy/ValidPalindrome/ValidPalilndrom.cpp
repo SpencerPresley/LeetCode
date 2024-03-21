@@ -4,25 +4,25 @@
 class Solution {
 public:
     bool isPalindrome(std::string s) {
-        int left = 0;
-        int right = s.length() - 1;
+        int front = 0;
+        int back = s.length() - 1;
 
-        while (left < right) {
-            if (!std::isalnum(s[left])) {
-                left++;
+        while (front < back) {
+            if (!std::isalnum(s[front])) {
+                front++;
                 continue;
             }
 
-            if (!std::isalnum(s[right])) {
-                right--;
+            if (!std::isalnum(s[back])) {
+                back--;
                 continue;
             }
 
-            if (std::tolower(s[left]) != std::tolower(s[right])) {
+            if (std::tolower(s[front]) != std::tolower(s[back])) {
                 return false;
             }
-            left++;
-            right--;
+            front++;
+            back--;
         }
 
         return true;
@@ -56,18 +56,23 @@ once entire string has been tracersed without returning false we can confidently
 class Solution2 {
 public:
     bool isPalindrome2(const std::string& s) {
-        int left = 0;
-        int right = s.length() - 1;
+        int front = 0;
+        int back = s.length() - 1;
 
-        while (left < right) {
-            while (left < right && !std::isalnum(s[left])) left++;
-            while (left < right && !std::isalnum(s[right])) right--;
+        while (front < back) {
+            while (front < back && !std::isalnum(s[front])) { 
+                front++; 
+            }
 
-            if (left < right && std::tolower(s[left]) != std::tolower(s[right])) {
+            while (front < back && !std::isalnum(s[back])) { 
+                back--; 
+            }
+
+            if (front < back && std::tolower(s[front]) != std::tolower(s[back])) {
                 return false;
             }
-            left++;
-            right--;
+            front++;
+            back--;
         }
 
         return true;

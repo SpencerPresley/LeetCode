@@ -85,8 +85,7 @@ As with the first solutions we have two integers to act as pointers to index the
 And we again only iterate until the two pointers meet
 
 Here though we have two while loops to check if the current character is a letter or number and if not we increment the pointer
-We do this until left >= right as this will replace all non-alphanumeric characters in both halves of the string
-This way imeediately takes care of all the non-alphanumerical characters rather than doing it each iteration. 
+We do this until left >= right as this will skip all non-alphanumeric characters for this iteration of the loop.
 
 Then we make both current characters lowercase and check if they're equal, if they are we continue the loop iterating and decrementing the pointers,
 otherwise return false.
